@@ -6,6 +6,8 @@ partial class SaberPlayer : Sandbox.Player
 	{
 		SetModel("models/citizen/citizen.vmdl");
 
+		new ModelEntity("models/citizen/clothes/headset/headset.vmdl").SetParent(this, true);
+
 		var saber = new ModelEntity("models/saber/saber.vmdl");
 		saber.SetParent(this, "hold_R");
 		saber.Position = Vector3.Zero;
