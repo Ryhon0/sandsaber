@@ -6,6 +6,16 @@ partial class SaberPlayer : Sandbox.Player
 	{
 		SetModel("models/citizen/citizen.vmdl");
 
+		var saber = new ModelEntity("models/saber/saber.vmdl");
+		saber.SetParent(this, "hold_R");
+		saber.Position = Vector3.Zero;
+		saber.Rotation = Rotation.From(180, 90, 180);
+
+		saber = new ModelEntity("models/saber/saber.vmdl");
+		saber.SetParent(this, "hold_L");
+		saber.Position = Vector3.Zero;
+		saber.Rotation = Rotation.From(180, 90, 180);
+
 		Controller = new WalkController();
 		Animator = new StandardPlayerAnimator();
 		Camera = new ThirdPersonCamera();
