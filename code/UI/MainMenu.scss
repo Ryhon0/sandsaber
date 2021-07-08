@@ -1,0 +1,76 @@
+﻿MainMenu {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    background-color: #000a;
+    width: 100%;
+    height: 100%;
+    pointer-events: all;
+    transform: scale(1);
+    opacity: 1;
+    transition: all 0.5s ease;
+    padding: 64px;
+
+    &.hidden {
+        pointer-events: none;
+        transform: scale(0);
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+
+    div {
+        flex-direction: column;
+    }
+}
+
+.header {
+    color: white;
+    font-size: 64px;
+}
+
+.maplist {
+    background-color: #000a;
+    display: flex;
+    flex-direction: row;
+    height: 320px;
+    width: 100%;
+    align-items: center;
+
+    .children {
+        padding: 0px 32px;
+    }
+}
+
+.mapmenucontainer {
+    opacity: 1;
+    transition: all 0.5s ease;
+
+    &.hidden {
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+}
+
+.mapmenu {
+    opacity: 1;
+    transition: all 0.5s ease;
+    background-color: #000a;
+    padding: 16px;
+}
+
+button {
+    background-color: #000a;
+    transition: all 0.2s ease;
+    color: white;
+    padding: 6px;
+    font-size: 32px;
+
+    &:hover {
+        background-color: #111a;
+    }
+
+    &.active {
+        background-color: #333a;
+    }
+}

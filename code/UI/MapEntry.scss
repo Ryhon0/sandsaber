@@ -1,0 +1,34 @@
+﻿MapEntry {
+    width: 256px;
+    height: 256px;
+
+    .details {
+        position: absolute;
+        opacity: 0;
+        transition: all 0.2s ease;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        background-color: #000a;
+
+        .songname {
+            text-shadow: 0px 0px 2px black;
+            font-size: 24px;
+            color: white;
+        }
+    }
+
+    &:hover {
+        .details {
+            opacity: 1;
+            transition: all 0.2s ease;
+        }
+    }
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}

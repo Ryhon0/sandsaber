@@ -1,0 +1,19 @@
+﻿<div>
+    <div>
+        <text class="header">Maps</text>
+        <div class="maplist">
+            <div class="children" @ref="MapList">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="mapmenucontainer hidden">
+        <text @ref="MapMenuSongName" class="header"></text>
+        <select @ref="DifficultyBeatmapSelector">
+        </select>
+        <div class="mapmenu hidden">
+            <button onclick="StartSelectedMap()">Start</button>
+        </div>
+    </div>
+</div>
