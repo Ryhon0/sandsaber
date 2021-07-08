@@ -14,8 +14,10 @@ public class Note
 	/// </summary>
 	[JsonPropertyName("_lineIndex")]
 	public int LineIndex { get; set; }
-	// An integer number, from 0 to 2, which represents the layer where this note is located.
-	// The bottom most layer is located at layer 0, and inceases to the topmost layer located at index 2.
+	/// <summary>
+	/// An integer number, from 0 to 2, which represents the layer where this note is located.
+	/// The bottom most layer is located at layer 0, and inceases to the topmost layer located at index 2.
+	/// </summary>
 	[JsonPropertyName("_lineLayer")]
 	public int LineLayer { get; set; }
 	/// <summary>

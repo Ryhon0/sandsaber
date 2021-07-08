@@ -9,6 +9,10 @@ public class CustomData
 public class Map
 {
 	/// <summary>
+	/// Name of the directory the map is in
+	/// </summary>
+	public string Id;
+	/// <summary>
 	/// This field describes the version of the map format we are using. Currently, Beat Saber's map format is on version 2.0.0.
 	/// </summary>
 	[JsonPropertyName("_version")]
@@ -210,7 +214,7 @@ public class DifficultyBeatmap
 	/// This can be a floating point number to achieve a precise Jump Duration.
 	/// </summary>
 	[JsonPropertyName("_noteJumpStartBeatOffset")]
-	public int NoteJumpStartBeatOffset { get; set; }
+	public float NoteJumpStartBeatOffset { get; set; }
 	/// <summary>
 	/// This is an optional field that contains data unrelated to the official Beat Saber level format. If no custom data exists, this object should be removed entirely.
 	/// The exact specifics of what goes in CustomData is entirely dependent on community-created content that needs them.
