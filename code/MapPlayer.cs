@@ -16,9 +16,10 @@ public class MapPlayer : Entity
 	float CurrentBPM;
 	float BPMInterval => 60 / CurrentBPM;
 
-	public MapPlayer(Map m)
+	public MapPlayer(Map m, DifficultyFile dif)
 	{
 		Map = m;
+		Difficulty = dif;
 
 		CurrentBPM = m.BeatsPerMinute;
 		TimeSinceLastBeat = 0;

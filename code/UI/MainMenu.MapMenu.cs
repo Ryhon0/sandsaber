@@ -1,4 +1,6 @@
-﻿using Sandbox.UI;
+﻿using Sandbox;
+using Sandbox.UI;
+using System.Linq;
 
 partial class MainMenu
 {
@@ -23,5 +25,8 @@ partial class MainMenu
 	public void StartSelectedMap()
 	{
 		Hide();
+
+		ConsoleSystem.Run($"saber_map", SelectedMap.Id,
+			SelectedMap.DifficultyBeatmapSets.First().DifficultyBeatmaps.First().BeatmapFilename);
 	}
 }
