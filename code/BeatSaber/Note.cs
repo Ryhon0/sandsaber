@@ -28,7 +28,7 @@ public class Note
 	public NoteType Type { get; set; }
 	// This indicates the cut direction for the note
 	[JsonPropertyName("_cutDirection")]
-	public int CutDirection { get; set; }
+	public CutDirection CutDirection { get; set; }
 	/// <summary>
 	/// This is an optional field that contains data unrelated to the official Beat Saber level format. If no custom data exists, this object should be removed entirely.
 	/// The exact specifics of what goes in _customData is entirely dependent on community-created content that needs them.
