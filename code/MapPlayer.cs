@@ -8,7 +8,9 @@ public class MapPlayer : Entity
 	public Map Map;
 	public DifficultyFile Difficulty;
 
-	int Beat;
+	float LastBeat;
+	float MaxBeat;
+
 	TimeSince TimeSinceLastBeat;
 	TimeSince TimeSinceStart;
 	float CurrentBPM;
@@ -26,17 +28,19 @@ public class MapPlayer : Entity
 	[Sandbox.Event.Tick]
 	void Tick()
 	{
-		// Just in case there's multiple beats this tick
-		while (TimeSinceLastBeat >= BPMInterval)
-		{
-			TimeSinceLastBeat = TimeSinceLastBeat - BPMInterval;
-			Step();
-		}
+		LastBeat = MaxBeat;
+
+		MaxBeat = LastBeat + TimeSinceLastBeat / BPMInterval;
+		//Log.Info(MaxBeat);
+
+		TimeSinceLastBeat = 0;
+
+		Step();
 	}
 
 	void Step()
 	{
-		foreach (var note in GetNotes(Beat))
+		foreach (var note in GetNotes())
 		{
 			switch (note.Type)
 			{
@@ -56,7 +60,7 @@ public class MapPlayer : Entity
 			}
 		}
 
-		foreach (var e in GetEvents(Beat))
+		foreach (var e in GetEvents())
 		{
 			switch (e.Type)
 			{
@@ -71,12 +75,14 @@ public class MapPlayer : Entity
 			}
 		}
 
+	IEnumerable<Note> GetNotes()
+		=> Difficulty.Notes.Where(n => n.Time > LastBeat && n.Time <= MaxBeat);
+
+	IEnumerable<Event> GetEvents()
+		=> Difficulty.Events.Where(e => e.Time > LastBeat && e.Time <= MaxBeat);
+
 		Beat++;
 	}
 
-	IEnumerable<Note> GetNotes(int time)
-		=> Difficulty.Notes.Where(n => n.Time == time);
 
-	IEnumerable<Event> GetEvents(int time)
-		=> Difficulty.Events.Where(n => n.Time == time);
 }

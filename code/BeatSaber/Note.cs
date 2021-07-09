@@ -7,7 +7,7 @@ public class Note
 	/// The time, in beats, where this object reaches the player.
 	/// </summary>
 	[JsonPropertyName("_time")]
-	public int Time { get; set; }
+	public float Time { get; set; }
 	/// <summary>
 	/// An integer number, from 0 to 3, which represents the column where this note is located.
 	/// The far left column is located at index 0, and increases to the far right column located at index 3.

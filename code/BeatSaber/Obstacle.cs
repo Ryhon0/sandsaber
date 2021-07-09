@@ -6,7 +6,7 @@ public class Obstacle
 	/// The time, in beats, where this object reaches the player.
 	/// </summary>
 	[JsonPropertyName("_time")]
-	public int Time { get; set; }
+	public float Time { get; set; }
 	/// <summary>
 	/// An integer number, from 0 to 3, which represents the column where the left side of the obstacle is located.
 	/// The far left column is located at index 0, and increases to the far right column located at index 3.
@@ -19,10 +19,10 @@ public class Obstacle
 	[JsonPropertyName("_type")]
 	public ObstacleType Type { get; set; }
 	/// <summary>
-	/// The time, in beats, that the obstacle extends for. While _duration can go into negative numbers, be aware that this has some unintended effects.
+	/// The time, in beats, that the obstacle extends for. While Duration can go into negative numbers, be aware that this has some unintended effects.
 	/// </summary>
 	[JsonPropertyName("_duration")]
-	public int Duration { get; set; }
+	public float Duration { get; set; }
 	/// <summary>
 	/// How many columns the obstacle takes up.
 	/// A Width of 4 will mean that this wall will extend the entire playable grid.

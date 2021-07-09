@@ -7,7 +7,7 @@ public class Event
 	/// The time, in beats, where this object reaches the player
 	/// </summary>
 	[JsonPropertyName("_time")]
-	public int Time { get; set; }
+	public float Time { get; set; }
 	/// <summary>
 	/// An integer number which represents what exact kind of event this object represents
 	/// </summary>
