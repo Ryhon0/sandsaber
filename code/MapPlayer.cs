@@ -48,10 +48,12 @@ public class MapPlayer : Entity
 				case NoteType.Left:
 				case NoteType.Right:
 					Log.Info($"{note.Type} {note.CutDirection} ({note.LineIndex},{note.LineLayer})");
+					SpawnBlock(note);
 					break;
 
 				case NoteType.Bomb:
 					Log.Info($"Bomb ({note.LineIndex},{note.LineLayer})");
+					SpawnBomb(note);
 					break;
 
 				default:
@@ -75,6 +77,7 @@ public class MapPlayer : Entity
 					break;
 			}
 		}
+	}
 
 	IEnumerable<Note> GetNotes()
 		=> Difficulty.Notes.Where(n => n.Time > LastBeat && n.Time <= MaxBeat);
@@ -82,8 +85,63 @@ public class MapPlayer : Entity
 	IEnumerable<Event> GetEvents()
 		=> Difficulty.Events.Where(e => e.Time > LastBeat && e.Time <= MaxBeat);
 
-		Beat++;
+	void SpawnBlock(Note n)
+	{
+		var b = new Block();
+
+		if (n.CutDirection == CutDirection.Any)
+			b.SetMaterialGroup(0);
+
+		var rot = 0f;
+
+		switch (n.CutDirection)
+		{
+			case CutDirection.Down:
+			case CutDirection.Any:
+				rot = 0f;
+				break;
+
+			case CutDirection.Left:
+				rot = -90;
+				break;
+
+			case CutDirection.Right:
+				rot = -90;
+				break;
+
+			case CutDirection.Up:
+				rot = 180;
+				break;
+
+			case CutDirection.DownLeft:
+				rot = -45;
+				break;
+
+			case CutDirection.DownRight:
+				rot = 45;
+				break;
+
+			case CutDirection.UpLeft:
+				rot = -135;
+				break;
+
+			case CutDirection.UpRight:
+				rot = 135;
+				break;
+		}
+
+		b.Rotation = Rotation.From(0, 180, rot);
+
+		b.Position = new Vector3(1000, (n.LineIndex - 2) * -20, (n.LineLayer + 1.5f) * 20);
+
+		b.RenderColor = b.GlowColor =
+			n.Type == NoteType.Left ? new Color(1, 0, 0) : new Color(0, 0, 1);
 	}
 
+	void SpawnBomb(Note n)
+	{
+		var b = new Bomb();
 
+		b.Position = new Vector3(1000, (n.LineIndex - 2) * -20, (n.LineLayer + 1.5f) * 20);
+	}
 }

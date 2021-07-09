@@ -1,12 +1,11 @@
 ﻿using Sandbox;
 
-public class Block : Prop
+public class Bomb : Prop
 {
-
 	public override void Spawn()
 	{
 		base.Spawn();
-		SetModel("models/block/block.vmdl");
+		SetModel("models/bomb/bomb.vmdl");
 		MoveType = MoveType.MOVETYPE_FLY;
 		Velocity = new Vector3(-1000, 0, 0);
 	}
