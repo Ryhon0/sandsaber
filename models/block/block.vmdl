@@ -30,16 +30,8 @@
 						remaps = 
 						[
 							{
-								from = "sides.vmat"
-								to = "models/block/block_sides.vmat"
-							},
-							{
-								from = "front.vmat"
-								to = "models/block/block_any.vmat"
-							},
-							{
-								from = "inside.vmat"
-								to = "models/block/block_inside.vmat"
+								from = "models/block/directional.vmat"
+								to = "models/block/any.vmat"
 							},
 						]
 					},
@@ -49,7 +41,7 @@
 						[
 							{
 								from = "front.vmat"
-								to = "models/block/block_front.vmat"
+								to = "models/block/directional.vmat"
 							},
 							{
 								from = "inside.vmat"
