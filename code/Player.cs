@@ -12,11 +12,17 @@ partial class SaberPlayer : Sandbox.Player
 		saber.SetParent(this, "hold_R");
 		saber.Position = Vector3.Zero;
 		saber.Rotation = Rotation.From(180, 90, 180);
+		saber.GlowColor = new Color(0, 0, 1);
+		saber.GlowActive = true;
+		saber.GlowState = GlowStates.GlowStateOn;
 
 		saber = new ModelEntity("models/saber/saber.vmdl");
 		saber.SetParent(this, "hold_L");
 		saber.Position = Vector3.Zero;
 		saber.Rotation = Rotation.From(180, 90, 180);
+		saber.GlowColor = new Color(1, 0, 0);
+		saber.GlowActive = true;
+		saber.GlowState = GlowStates.GlowStateOn;
 
 		Controller = new WalkController();
 		Animator = new StandardPlayerAnimator();
