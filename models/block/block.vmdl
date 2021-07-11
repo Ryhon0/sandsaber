@@ -25,17 +25,6 @@
 				children = 
 				[
 					{
-						_class = "MaterialGroup"
-						name = "any"
-						remaps = 
-						[
-							{
-								from = "models/block/directional.vmat"
-								to = "models/block/any.vmat"
-							},
-						]
-					},
-					{
 						_class = "DefaultMaterialGroup"
 						remaps = 
 						[
@@ -54,6 +43,17 @@
 						]
 						use_global_default = false
 						global_default_material = ""
+					},
+					{
+						_class = "MaterialGroup"
+						name = "any"
+						remaps = 
+						[
+							{
+								from = "models/block/directional.vmat"
+								to = "models/block/any.vmat"
+							},
+						]
 					},
 				]
 			},

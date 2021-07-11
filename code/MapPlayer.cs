@@ -100,7 +100,7 @@ public class MapPlayer : Entity
 		var b = new Block();
 
 		if (n.CutDirection == CutDirection.Any)
-			b.SetMaterialGroup(0);
+			b.SetMaterialGroup(1);
 
 		var rot = 0f;
 
