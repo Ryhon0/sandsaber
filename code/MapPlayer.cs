@@ -142,7 +142,7 @@ public class MapPlayer : Entity
 
 		b.Rotation = Rotation.From(0, 180, rot);
 
-		b.Position = new Vector3(1000, (n.LineIndex - 2) * -20, (n.LineLayer + 1.5f) * 20);
+		b.Position = new Vector3(1000, (n.LineIndex * -32f) + 48, 32 + (n.LineLayer * 32));
 
 		b.RenderColor = b.GlowColor =
 			n.Type == NoteType.Left ? new Color(1, 0, 0) : new Color(0, 0, 1);
@@ -152,7 +152,8 @@ public class MapPlayer : Entity
 	{
 		var b = new Bomb();
 
-		b.Position = new Vector3(1000, (n.LineIndex - 2) * -20, (n.LineLayer + 1.5f) * 20);
+		b.Position = new Vector3(1000, (n.LineIndex * -32f) + 48, (n.LineLayer + 1.5f) * 20);
+	}
 
 	void SpawnObstacle(Obstacle o)
 	{
