@@ -77,6 +77,12 @@ public class MapPlayer : Entity
 					break;
 			}
 		}
+
+		foreach (var o in GetObstacles())
+		{
+			Log.Info($"Obstacle {o.Type} ({o.LineIndex},{o.Width},{o.Duration})");
+			SpawnObstacle(o);
+		}
 	}
 
 	IEnumerable<Note> GetNotes()
@@ -84,6 +90,10 @@ public class MapPlayer : Entity
 
 	IEnumerable<Event> GetEvents()
 		=> Difficulty.Events.Where(e => e.Time > LastBeat && e.Time <= MaxBeat);
+
+	IEnumerable<Obstacle> GetObstacles()
+		=> Difficulty.Obstacles.Where(o => o.Time > LastBeat && o.Time <= MaxBeat);
+
 
 	void SpawnBlock(Note n)
 	{
@@ -143,5 +153,24 @@ public class MapPlayer : Entity
 		var b = new Bomb();
 
 		b.Position = new Vector3(1000, (n.LineIndex - 2) * -20, (n.LineLayer + 1.5f) * 20);
+
+	void SpawnObstacle(Obstacle o)
+	{
+		var len = (int)(o.Duration * 2000f);
+		var h = o.Type == ObstacleType.FullHeightWall ? 100 : 50;
+		var w = o.Width * 32;
+		var rect = VertexMeshBuilder.GenerateRectangleServer(len, w, h, 1);
+		var obstacle = new ObstacleEntity()
+		{
+			Model = rect
+		};
+		obstacle.Position = new Vector3(1000 + len / 2,
+			48 - (o.LineIndex * 32) - ((o.Width - 1) * 16)
+			, 100 - h / 2);
+		obstacle.Tick();
+
+		obstacle.MoveType = MoveType.MOVETYPE_FLY;
+		obstacle.Velocity = new Vector3(-1000, 0, 0);
+		obstacle.CollisionGroup = CollisionGroup.Never;
 	}
 }
