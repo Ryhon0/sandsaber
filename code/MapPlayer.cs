@@ -68,6 +68,7 @@ public class MapPlayer : Entity
 			switch (e.Type)
 			{
 				case EventType.BPMChange:
+					Log.Info($"BPM changed to {e.Value}");
 					CurrentBPM = (float)e.Value;
 					break;
 
