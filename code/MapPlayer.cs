@@ -106,37 +106,37 @@ public class MapPlayer : Entity
 
 		switch (n.CutDirection)
 		{
-			case CutDirection.Down:
 			case CutDirection.Any:
+			case CutDirection.Up:
 				rot = 0f;
 				break;
 
 			case CutDirection.Left:
-				rot = -90;
+				rot = 90;
 				break;
 
 			case CutDirection.Right:
 				rot = -90;
 				break;
 
-			case CutDirection.Up:
+			case CutDirection.Down:
 				rot = 180;
 				break;
 
 			case CutDirection.DownLeft:
-				rot = -45;
+				rot = 135;
 				break;
 
 			case CutDirection.DownRight:
-				rot = 45;
-				break;
-
-			case CutDirection.UpLeft:
 				rot = -135;
 				break;
 
+			case CutDirection.UpLeft:
+				rot = 15;
+				break;
+
 			case CutDirection.UpRight:
-				rot = 135;
+				rot = -45;
 				break;
 		}
 
