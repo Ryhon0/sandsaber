@@ -8,12 +8,16 @@ public partial class MainMenu : Panel
 {
 	public static MainMenu Current;
 
+	public Label MapPathLabel { get; set; }
 	public Panel MapList { get; set; }
 	public MainMenu()
 	{
 		StyleSheet.Load("/code/UI/MainMenu.scss");
 		LoadMaps();
 		Current = this;
+
+		MapPathLabel.Text = $"Maps are stored in '{FileSystem.Data.GetFullPath("/maps")}' as folders.\n" +
+			"Visit BeastSaber.com to download maps";
 	}
 
 	void LoadMaps()
