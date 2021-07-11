@@ -14,6 +14,7 @@ public class Bomb : Prop
 	{
 		base.Touch(other);
 
-		Delete();
+		if (IsServer)
+			Delete();
 	}
 }

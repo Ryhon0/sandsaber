@@ -15,6 +15,7 @@ public class Block : Prop
 	{
 		base.Touch(other);
 
-		Delete();
+		if (IsServer)
+			Delete();
 	}
 }
