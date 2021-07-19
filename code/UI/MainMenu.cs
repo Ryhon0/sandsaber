@@ -24,6 +24,9 @@ public partial class MainMenu : Panel
 	{
 		MapList.DeleteChildren();
 
+		if(!FileSystem.Data.DirectoryExists("maps"))
+			FileSystem.Data.CreateDirectory("maps");
+
 		var folders = FileSystem.Data.FindDirectory("maps");
 		foreach (var f in folders)
 		{
